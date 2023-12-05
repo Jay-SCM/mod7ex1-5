@@ -1,7 +1,4 @@
 //exercise 1
-
-//BitcoinRates.jsx.jsx
-
 // import React, { useState, useEffect } from 'react';
 //
 // const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD'];
@@ -54,21 +51,53 @@
 //
 // export default BitcoinRates;
 
-
-
 //exercise2
-
 // BitcoinRates.jsx
+// import React from 'react';
+// import useBitcoinData from './useBitcoinData';
+//
+// const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD'];
+//
+// function BitcoinRates() {
+//     const { currency, setCurrency, bitcoinPrice, loading, error } = useBitcoinData(currencies[0]);
+//
+//     const options = currencies.map(curr => <option value={curr} key={curr}>{curr}</option>);
+//
+//     return (
+//         <div className="BitcoinRates componentBox">
+//             <h3>Bitcoin Exchange Rate</h3>
+//             <label>
+//                 Choose currency:
+//                 <select value={currency} onChange={e => setCurrency(e.target.value)}>
+//                     {options}
+//                 </select>
+//             </label>
+//
+//             {loading ? (
+//                 <p>Loading...</p>
+//             ) : error ? (
+//                 <p>Error: {error}</p>
+//             ) : (
+//                 <p>
+//                     Current Bitcoin Price in {currency}: {bitcoinPrice}
+//                 </p>
+//             )}
+//         </div>
+//     );
+// }
+//
+// export default BitcoinRates;
+
+
+//exercise4
 import React from 'react';
-import useBitcoinData from './useBitcoinData';
-
+import useBitcoinData from '../components/useBitcoinData';
+import { useEmoji } from '../EmojiContext';
 const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD'];
-
 function BitcoinRates() {
     const { currency, setCurrency, bitcoinPrice, loading, error } = useBitcoinData(currencies[0]);
-
+    const { isHappy, toggleMood } = useEmoji();
     const options = currencies.map(curr => <option value={curr} key={curr}>{curr}</option>);
-
     return (
         <div className="BitcoinRates componentBox">
             <h3>Bitcoin Exchange Rate</h3>
@@ -78,7 +107,8 @@ function BitcoinRates() {
                     {options}
                 </select>
             </label>
-
+            <p>Mood: {isHappy ? 'Happy' : 'Sad'}</p>
+            <button onClick={toggleMood}>Toggle Mood</button>
             {loading ? (
                 <p>Loading...</p>
             ) : error ? (
@@ -91,5 +121,5 @@ function BitcoinRates() {
         </div>
     );
 }
-
 export default BitcoinRates;
+
