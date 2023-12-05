@@ -93,46 +93,114 @@
 // export default App;
 
 //exercise 4
-import React from 'react';
+//
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+// import BitcoinRates from './components/BitcoinRates';
+// import Emoji from './components/Emoji';
+// import { EmojiProvider } from './EmojiContext';
+// import Home from './pages/Home';
+// import Login from './pages/Login';
+// import './App.css';
+// function App() {
+//     const [count, setCount] = React.useState(0);
+//
+//     return (
+//         <Router>
+//             <EmojiProvider>
+//                 <div>
+//                     <nav>
+//                         <ul>
+//                             <li>
+//                                 <Link to="/">Home</Link>
+//                             </li>
+//                             <li>
+//                                 <Link to="/login">Login</Link>
+//                             </li>
+//                             <li>
+//                                 <Link to="/bitcoin-rates">Bitcoin Rates</Link>
+//                             </li>
+//                         </ul>
+//                     </nav>
+//                     <Routes>
+//                         <Route path="/login" element={<Login />} />
+//                         <Route path="/bitcoin-rates" element={<BitcoinRates />} />
+//                         <Route path="/" element={<Home />} />
+//                     </Routes>
+//
+//                     {/* Conditionally render Emoji and BitcoinRates */}
+//                     {window.location.pathname === '/bitcoin-rates' && <Emoji />}
+//                     {window.location.pathname === '/bitcoin-rates' && <BitcoinRates />}
+//
+//                     <div className="card">
+//                         <button onClick={() => setCount((count) => count + 1)}>
+//                             count is {count}
+//                         </button>
+//                         <p>
+//                             Edit <code>src/App.jsx</code> and save to test HMR
+//                         </p>
+//                     </div>
+//                     <p className="read-the-docs">
+//                         Click on the Vite and React logos to learn more
+//                     </p>
+//                 </div>
+//             </EmojiProvider>
+//         </Router>
+//     );
+// }
+// export default App;
+
+//exercise5
+
+// App.jsx
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import BitcoinRates from './components/BitcoinRates';
 import Emoji from './components/Emoji';
 import { EmojiProvider } from './EmojiContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import './App.css';
+
+function Navigation() {
+    return (
+        <AppBar position="static">
+            <Toolbar>
+                <Button component={Link} to="/" color="inherit">
+                    Home
+                </Button>
+                <Button component={Link} to="/login" color="inherit">
+                    Login
+                </Button>
+                <Button component={Link} to="/bitcoin-rates" color="inherit">
+                    Bitcoin Rates
+                </Button>
+            </Toolbar>
+        </AppBar>
+    );
+}
+
 function App() {
     const [count, setCount] = React.useState(0);
 
     return (
         <Router>
             <EmojiProvider>
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/login">Login</Link>
-                            </li>
-                            <li>
-                                <Link to="/bitcoin-rates">Bitcoin Rates</Link>
-                            </li>
-                        </ul>
-                    </nav>
+                <Container>
+                    <Navigation />
                     <Routes>
                         <Route path="/login" element={<Login />} />
                         <Route path="/bitcoin-rates" element={<BitcoinRates />} />
                         <Route path="/" element={<Home />} />
                     </Routes>
 
-                    {/* Conditionally render Emoji and BitcoinRates */}
-                    {window.location.pathname === '/bitcoin-rates' && <Emoji />}
-                    {window.location.pathname === '/bitcoin-rates' && <BitcoinRates />}
-
                     <div className="card">
                         <button onClick={() => setCount((count) => count + 1)}>
+
                             count is {count}
                         </button>
                         <p>
@@ -142,11 +210,12 @@ function App() {
                     <p className="read-the-docs">
                         Click on the Vite and React logos to learn more
                     </p>
-                </div>
+                </Container>
             </EmojiProvider>
         </Router>
     );
 }
+
 export default App;
 
 

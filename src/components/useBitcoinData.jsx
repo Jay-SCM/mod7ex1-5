@@ -1,4 +1,6 @@
 //exercise2
+
+//useBitcoinData.jsx
 import { useState, useEffect, useReducer } from 'react';
 const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD'];
 const useBitcoinData = (initialCurrency) => {

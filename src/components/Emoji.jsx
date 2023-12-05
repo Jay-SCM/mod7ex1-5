@@ -1,8 +1,10 @@
 //exercise3
+// Emoji.jsx
 import React from 'react';
 import happyEmoji from '../assets/icon/happy.jpg';
 import sadEmoji from '../assets/icon/sad.jpg';
 import { useEmoji } from '../EmojiContext.jsx';
+
 const Emoji = () => {
     const { isHappy, toggleMood } = useEmoji();
     return (
@@ -18,4 +20,5 @@ const Emoji = () => {
         </div>
     );
 };
+
 export default Emoji;
