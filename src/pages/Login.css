@@ -1,0 +1,23 @@
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #e52222;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: orange;
+}
+.form-input {
+    margin-bottom: 16px;
+}
+.login-container .login-button {
+    margin-top: 16px;
+    background-color: #4caf50;
+    color: rgba(40, 39, 39, 0.8);
+}
+
+/* does not  work */
+/*.login-container. h2{*/
+/*    color: greenyellow;*/
+/*}*/

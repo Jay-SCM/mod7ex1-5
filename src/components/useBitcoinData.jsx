@@ -1,5 +1,4 @@
 //exercise2
-
 //useBitcoinData.jsx
 import { useState, useEffect, useReducer } from 'react';
 const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD'];
@@ -15,24 +14,19 @@ const useBitcoinData = (initialCurrency) => {
                     ...state,
                     bitcoinPrice: action.payload,
                     loading: false,
-                    error: null,
-                };
+                    error: null,};
             case 'SET_ERROR':
                 return {
                     ...state,
                     bitcoinPrice: null,
                     loading: false,
-                    error: action.payload,
-                };
+                    error: action.payload,};
             default:
-                return state;
-        }
-    };
+                return state;}};
     const [state, dispatch] = useReducer(reducer, {
         bitcoinPrice: null,
         loading: true,
-        error: null,
-    });
+        error: null,});
     useEffect(() => {
         const fetchBitcoinPrice = async () => {
             try {
@@ -40,9 +34,7 @@ const useBitcoinData = (initialCurrency) => {
                 const data = await response.json();
                 dispatch({ type: 'SET_DATA', payload: data.bitcoin[currency] });
             } catch (error) {
-                dispatch({ type: 'SET_ERROR', payload: error.message });
-            }
-        };
+                dispatch({ type: 'SET_ERROR', payload: error.message });}};
         fetchBitcoinPrice();
     }, [currency]);
     return {
@@ -50,7 +42,5 @@ const useBitcoinData = (initialCurrency) => {
         setCurrency,
         bitcoinPrice: state.bitcoinPrice,
         loading: state.loading,
-        error: state.error,
-    };
-};
+        error: state.error,};};
 export default useBitcoinData;
